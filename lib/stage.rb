@@ -1,4 +1,5 @@
 require("pry")
+require("artist")
 
 class Stage
   attr_reader :id, :name
@@ -14,9 +15,11 @@ class Stage
   def self.all
     @@stages.values()
   end
-
+  def self.stages
+    @@stages
+  end
   def save
-    @@stages[self.id] = Album.new(self.name, self.id)
+    @@stages[self.id] = Stage.new(self.name, self.id)
   end
 
   def ==(stage_to_compare)
@@ -39,7 +42,7 @@ class Stage
   def delete
     @@stages.delete(self.id)
   end
-
+  
   def artists
     Artist.find_by_stage(self.id)
   end

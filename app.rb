@@ -1,8 +1,7 @@
 require('sinatra')
 require('sinatra/reloader')
-require('./lib/album')
+require('./lib/stage')
 require('pry')
 also_reload('lib/**/*.rb')
-require('./lib/song')
+require('./lib/artist')
 
-Class1 < Class2
