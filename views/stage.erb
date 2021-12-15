@@ -5,7 +5,7 @@
   <% if @stage.artists %>
     <ul>
       <% @stage.artists.each do |artist| %>
-        <li><a href="/stages/<%= @stage.id %>/artists/<%= artist.id %>"><%= stage.name %></a></li>
+        <li><a href="/stages/<%= @stage.id %>/artists/<%= artist.id %>"><%= artist.name %></a></li>
       <% end %>
     </ul>
   <% else %>

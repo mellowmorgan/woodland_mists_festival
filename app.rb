@@ -31,3 +31,17 @@ post('/stages') do
   @stages = Stage.all
   erb(:stages)
 end
+
+post('/stages/:id/artists') do
+  @stage = Stage.find(params[:id].to_i)
+  name = params[:artist_name]
+  artist = Artist.new(name, @stage.id, nil)
+  artist.save
+  @artists = Artist.all
+  erb(:stage)
+end
+
+get('/stages/:id/artists/:artist_id') do
+  @artist = Artist.find(params[:artist_id].to_i())
+  erb(:artist)
+end
