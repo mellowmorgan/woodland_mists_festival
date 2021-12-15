@@ -1,4 +1,3 @@
-
 class Artist
   attr_reader :id
   attr_accessor :name, :stage_id

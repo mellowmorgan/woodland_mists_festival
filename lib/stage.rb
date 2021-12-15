@@ -1,5 +1,4 @@
 require("pry")
-require("artist")
 
 class Stage
   attr_reader :id, :name
