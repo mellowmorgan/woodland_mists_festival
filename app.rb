@@ -45,3 +45,17 @@ get('/stages/:id/artists/:artist_id') do
   @artist = Artist.find(params[:artist_id].to_i())
   erb(:artist)
 end
+
+delete('/stages/:id') do
+  stage = Stage.find(params[:id].to_i)
+  stage.delete
+  @stages = Stage.all
+  erb(:stages)
+end
+
+patch('/stages/:id') do
+  @stage = Stage.find(params[:id].to_i)
+  @stage.update(params[:stage_name])
+  @stages = Stage.all
+  erb(:stage)
+end
