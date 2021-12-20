@@ -2,13 +2,10 @@ class Artist
   attr_reader :id
   attr_accessor :name, :stage_id
 
-  @@artists = {}
-  @@total_rows = 0
-
-  def initialize(name, stage_id, id)
-    @name = name
-    @stage_id = stage_id
-    @id = id || @@total_rows += 1
+  def initialize(attributes)
+    @name = attributes.fetch(:name)
+    @stage_id = attributes.fetch(:stage_id)
+    @id = attributes.fetch(:id)
   end
 
   def ==(artist_to_compare)
@@ -16,7 +13,7 @@ class Artist
   end
 
   def self.all
-    @@artists.values
+    returned_artist = DB.exec("SELECT * FROM artists")
   end
 
   def save

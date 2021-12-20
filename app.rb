@@ -4,6 +4,9 @@ require('./lib/stage')
 require('./lib/artist')
 require('pry')
 also_reload('lib/**/*.rb')
+require('pg')
+
+DB = PG.connect({:dbname => "festival_database"})
 
 get('/') do
   @stages = Stage.all
