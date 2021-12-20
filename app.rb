@@ -29,7 +29,7 @@ end
 
 post('/stages') do
   name = params[:stage_name]
-  stage = Stage.new(name, nil)
+  stage = Stage.new(:name => name, :id => nil)
   stage.save
   @stages = Stage.all
   erb(:stages)
@@ -38,7 +38,7 @@ end
 post('/stages/:id/artists') do
   @stage = Stage.find(params[:id].to_i)
   name = params[:artist_name]
-  artist = Artist.new(name, @stage.id, nil)
+  artist = Artist.new({:name => name, :stage_id => @stage.id, :id => nil})
   artist.save
   @artists = Artist.all
   erb(:stage)
