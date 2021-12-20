@@ -13,38 +13,55 @@ class Artist
   end
 
   def self.all
-    returned_artist = DB.exec("SELECT * FROM artists")
+    returned_artist = DB.exec("SELECT * FROM artists;")
+    artists = []
+    returned_artist.each do |artist|
+      name = artist.fetch("name")
+      id = artist.fetch("id").to_i
+      stage_id = artist.fetch("stage_id").to_i
+      artists.push(Artist.new({:name => name, :stage_id => stage_id, :id => id }))
+    end
+    artists
   end
 
   def save
-    @@artists[self.id] = Artist.new(self.name, self.stage_id, self.id)
+    result = DB.exec("INSERT INTO artists (name, stage_id) VALUES ('#{@name}', #{@stage_id}) RETURNING id;")
+    @id = result.first().fetch("id").to_i
   end
 
   def self.find(id)
-    @@artists[id]
+    artist = DB.exec("SELECT * FROM artists WHERE id = #{id};").first
+    if artist
+      name = artist.fetch("name")
+      stage_id = artist.fetch("stage_id").to_i
+      id = artist.fetch("id").to_i
+      Artist.new({:name => name, :stage_id => stage_id, :id => id})
+    else
+      nil
+    end
   end
 
   def update(name, stage_id)
-    self.name = name
-    self.stage_id = stage_id
-    @@artists[self.id] = Artist.new(self.name, self.stage_id, self.id)
+    @name = name
+    @stage_id = stage_id
+    DB.exec("UPDATE artists SET name = '#{@name}', stage_id = #{@stage_id} WHERE id = #{@id};")
   end
 
   def delete
-    @@artists.delete(self.id)
+    DB.exec("DELETE FROM artists WHERE id = #{@id};")
   end
 
   def self.clear
-    @@artists = {}
-    @@total_rows = 0
+    DB.exec("DELETE FROM artists;")
   end
 
   def self.find_by_stage(st_id)
     artists = []
-    @@artists.values.each do |artist|
-      if artist.stage_id == st_id
-        artists.push(artist)
-      end
+    returned_artists = DB.exec("SELECT * FROM artists WHERE stage_id = #{st_id};")
+    returned_artists.each do |artist| 
+      name = artist.fetch("name")
+      id = artist.fetch("id").to_i
+      artists.push(Artist.new({:name => name, :stage_id => st_id, :id => id}))
     end
     artists
   end
