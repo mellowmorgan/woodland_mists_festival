@@ -1,36 +1,41 @@
-# {Application Name}
+# _Woodland Mists Festival_
 
-#### Created By _**{Name}**_
+#### _Ruby Week 2 Routing with Sinatra practice project for Epicodus Bootcamp_
 
-#### _An application to_
+#### Created By: **Christopher Neal, Frank Proulx, & Morgan Waites**
+
 
 ## Technologies Used
 
 * _Ruby_
+* _Gems_
+* _Bundler_
 * _RSpec_
 * _IRB_
 * _Pry_
+* _Sinatra_
 
 ## Description
 
-_This project was created for Epicodus bootcamp to show proficiency in. The application is for . The user can ._
+_This project was created for Epicodus bootcamp to show proficiency in Ruby and routing with Sinatra. The user can add stages and artists to an imaginary music festival._
+
+## System Requirements
+
+* Ruby v2.6.5 recommended
+* Postgres 12.9  
+_(Note: Ruby gem dependencies will be installed automatically by Bundler.)_
 
 ## Setup/Installation Requirements
 
-* _Clone the GitHub [repository]({github repository}) or download and open the Zip on your local machine.
-
-## Known Bugs
-
-_None at this time_
-
-## Future Updates
-
-* __
+* Clone the GitHub repository: [https://github.com/christophermneal/woodland_mists_festival](https://github.com/christophermneal/woodland_mists_festival)
+* From the main project directory, enter `bundle install` in the terminal to populate gems.
+* Enter `ruby app.rb` to run the program with Sinatra.
+* Open browswer and enter the url http://localhost:4567/ unless otherwise prompted in the terminal.
 
 ## License
 
 _[MIT](https://opensource.org/licenses/MIT)_
-Copyright (c) _2021_ _{Name}_
+Copyright (c) _2021_ _Christopher Neal, Frank Proulx, & Morgan Waites_
 
 ## Support and Contact Details
-* _[{email}](mailto:{email})_
+* _[christopher.m.neal@gmail.com](mailto:christopher.m.neal@gmail.com)_
